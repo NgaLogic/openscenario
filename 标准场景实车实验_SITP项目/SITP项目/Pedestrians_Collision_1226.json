@@ -1,0 +1,327 @@
+{
+    "id": "100001",
+    "scenario_id": "1",
+    "scenario_name": "行人鬼探头",
+    "case_id": "1",
+    "case_name": "30km/h行人鬼探头",
+    "vut_id": "obu-0003",//被测车id vehicle under test
+    "vut_vel": "30",//被测车速度km/h
+    "participant_id": "obu-0021",//主要参与者编号
+    "participant_vel": "5",//主要参与者速度km/h
+    "enable_status": true,//是否启用
+    "creat_time": NumberLong("1691499479615"),//创建时间，毫秒值
+    "update_time": NumberLong("1696828932432"),//更新时间，毫秒值
+    "veh_num": NumberInt("1"),//假车数量
+    "TTC":"3.6",//预碰撞时间，s
+    "participant_acc":"2",//主要交通参与者假人加速度，m/s^2
+    "participant_collision_dis":"TTC * participant_vel + (participant_vel^2) / (2 * participant_acc)",//假人碰撞距离米
+    "vut_collision_dis":"TTC * vut_vel + (vut_vel * participant_vel) / participant_acc",//被测车碰撞距离米
+    "participant_vut_collision_dis": "sqrt( participant_collision_dis^2 + vut_collision_dis^2 )",//假人和被测车的触发距离米
+    "trigger_distance":"0",
+    "veh_content": [//假车详情
+        {
+            "veh_id": "obu-0010",
+            "veh_vel": "0",
+            "trajectory_num": NumberInt("1"),
+            "trajectory_content": [
+                {
+                    "time": 0,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90
+                },
+                {
+                    "time": 1,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90
+                },
+                {
+                    "time": 2,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90
+                },
+                {
+                    "time": 3,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90
+                },
+                {
+                    "time": 4,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90
+                },
+                {
+                    "time": 5,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90
+                }                
+            ]
+        }
+    ],
+    "ped_num": NumberInt("1"),//假人数量
+    "ped_content": [//假人详情
+        {
+            "ped_id": "obu-0021",
+            "ped_vel": "5",
+            "trajectory_num": NumberInt("1"),
+            "trajectory_content": [
+                {
+                "time": 0.0,
+                "x": 0.0,
+                "y": 5.48,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.099206,
+                "x": 0.0,
+                "y": 5.469175,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.198413,
+                "x": 0.0,
+                "y": 5.436699,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.297619,
+                "x": 0.0,
+                "y": 5.382571,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.396825,
+                "x": 0.0,
+                "y": 5.306792,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.496031,
+                "x": 0.0,
+                "y": 5.209362,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.595238,
+                "x": 0.0,
+                "y": 5.09028,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.694445,
+                "x": 0.0,
+                "y": 5.0,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 0.9,
+                "x": 0.0,
+                "y": 4.714444,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 1.105555,
+                "x": 0.0,
+                "y": 4.428889,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 1.311111,
+                "x": 0.0,
+                "y": 4.143333,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 1.516666,
+                "x": 0.0,
+                "y": 3.857778,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 1.722222,
+                "x": 0.0,
+                "y": 3.572222,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 1.927778,
+                "x": 0.0,
+                "y": 3.286667,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 2.133333,
+                "x": 0.0,
+                "y": 3.001111,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 2.338889,
+                "x": 0.0,
+                "y": 2.715556,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 2.544444,
+                "x": 0.0,
+                "y": 2.43,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 2.75,
+                "x": 0.0,
+                "y": 2.144444,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 2.955555,
+                "x": 0.0,
+                "y": 1.858889,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 3.161111,
+                "x": 0.0,
+                "y": 1.573333,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 3.366666,
+                "x": 0.0,
+                "y": 1.287778,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 3.572222,
+                "x": 0.0,
+                "y": 1.002222,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 3.777778,
+                "x": 0.0,
+                "y": 0.716667,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 3.983333,
+                "x": 0.0,
+                "y": 0.431111,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 4.189444,
+                "x": 0.0,
+                "y": 0.145556,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 4.294444,
+                "x": 0.0,
+                "y": 0.0,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 4.5,
+                "x": 0.0,
+                "y": -0.285556,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 4.705556,
+                "x": 0.0,
+                "y": -0.571111,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 4.911111,
+                "x": 0.0,
+                "y": -0.856667,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 5.116667,
+                "x": 0.0,
+                "y": -1.142222,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 5.322222,
+                "x": 0.0,
+                "y": -1.427778,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 5.527778,
+                "x": 0.0,
+                "y": -1.713333,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 5.733333,
+                "x": 0.0,
+                "y": -1.998889,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 5.938889,
+                "x": 0.0,
+                "y": -2.284444,
+                "heading": 180.0,
+                "xyheading": 180.0
+                },
+                {
+                "time": 6.101594,
+                "x": 0.0,
+                "y": -2.5,
+                "heading": 180.0,
+                "xyheading": 180.0
+                }
+            ]
+        }
+    ]
+}
