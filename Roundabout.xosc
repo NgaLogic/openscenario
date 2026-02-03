@@ -539,22 +539,22 @@
                         <Shape>
                           <Polyline>
                             <Vertex time="0.00">
-                                <Position><WorldPosition x="-360.0000" y="145.0000" z="0" h="-1.5708"/></Position>
+                                <Position><WorldPosition x="-332.0000" y="118.0000" z="0" h="-2.3562"/></Position>
                             </Vertex>
                             <Vertex time="1.00">
-                                <Position><WorldPosition x="-360.0000" y="140.8300" z="0" h="-1.5708"/></Position>
+                                <Position><WorldPosition x="-332.0000" y="118.0000" z="0" h="-2.3562"/></Position>
                             </Vertex>
                             <Vertex time="2.00">
-                                <Position><WorldPosition x="-360.0000" y="136.6600" z="0" h="-1.5708"/></Position>
+                                <Position><WorldPosition x="-332.0000" y="118.0000" z="0" h="-2.3562"/></Position>
                             </Vertex>
                             <Vertex time="3.00">
-                                <Position><WorldPosition x="-360.0000" y="132.4900" z="0" h="-1.5708"/></Position>
+                                <Position><WorldPosition x="-332.0000" y="118.0000" z="0" h="-2.3562"/></Position>
                             </Vertex>
                             <Vertex time="4.00">
-                                <Position><WorldPosition x="-360.0000" y="128.3200" z="0" h="-1.5708"/></Position>
+                                <Position><WorldPosition x="-332.0000" y="118.0000" z="0" h="-2.3562"/></Position>
                             </Vertex>
                              <Vertex time="5.00">
-                                <Position><WorldPosition x="-360.0000" y="120.0000" z="0" h="-1.5708"/></Position>
+                                <Position><WorldPosition x="-332.0000" y="118.0000" z="0" h="-2.3562"/></Position>
                             </Vertex>
                           </Polyline>
                         </Shape>
