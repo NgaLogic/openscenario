@@ -13,3 +13,17 @@ h的角度弧度制，*180/pi
 
 Roundabout.xosc第68行（初始化静止车）x，y，z，h要和行289一样
 92行（VUT）
+
+git更新
+git add .
+git commit -m "这次改了什么"
+git push
+日志git log
+改炸了找以前版本
+git log          # 找到一个还能跑的 commit
+git checkout 提交ID
+对比到底改了什么
+git status   # 看哪些文件被改了
+git diff     # 看具体改了哪几行
+分支：尝试新算法，主分支为稳定版本（？）
+git checkout -b new-control-logic

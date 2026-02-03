@@ -3,7 +3,9 @@
 
   <FileHeader revMajor="1" revMinor="0" date="2026-01-29" description="VUT enters roundabout and meets stationary target" author="User"/>
 
-  <ParameterDeclarations/>
+<ParameterDeclarations>
+      <ParameterDeclaration name="TriggerDistance" parameterType="double" value="30.0"/>
+  </ParameterDeclarations>
 
   <CatalogLocations>
     <VehicleCatalog>
@@ -33,6 +35,16 @@
           <Dimensions width="1.8" length="4.5" height="1.6"/>
         </BoundingBox>
         <Performance maxSpeed="0" maxAcceleration="0" maxDeceleration="0"/>
+      </Vehicle>
+    </ScenarioObject>
+
+      <ScenarioObject name="VT1">
+      <Vehicle name="VT1_Car" vehicleCategory="car">
+        <BoundingBox>
+          <Center x="1.5" y="0.0" z="0.9"/>
+          <Dimensions width="1.8" length="4.5" height="1.6"/>
+        </BoundingBox>
+        <Performance maxSpeed="50" maxAcceleration="40" maxDeceleration="40"/>
       </Vehicle>
     </ScenarioObject>
   </Entities>
@@ -69,6 +81,26 @@
           </TeleportAction>
         </PrivateAction>
       </Private>
+
+      <Private entityRef="VT1">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                 <WorldPosition x="-360.0000" y="145.0000" z="0" h="-1.5708"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+          <PrivateAction>
+             <LongitudinalAction>
+                <SpeedAction>
+                   <SpeedActionDynamics dynamicsShape="step" value="0.0" dynamicsDimension="time"/>
+                   <SpeedActionTarget>
+                      <AbsoluteTargetSpeed value="0.0"/>
+                   </SpeedActionTarget>
+                </SpeedAction>
+             </LongitudinalAction>
+          </PrivateAction>
+        </Private>
     </Actions>
   </Init>
 
@@ -489,6 +521,73 @@
 						</Condition>
 					</ConditionGroup>
 				</StartTrigger>
+            </Event>
+          </Maneuver>
+        </ManeuverGroup>
+
+      <ManeuverGroup name="VT1_Group" maximumExecutionCount="1">
+          <Actors selectTriggeringEntities="false">
+            <EntityRef entityRef="VT1"/>
+          </Actors>
+          <Maneuver name="VT1_Maneuver">
+            <Event name="VT1_Approach_Collision" priority="overwrite">
+              <Action name="FollowTraj_VT1">
+                <PrivateAction>
+                  <RoutingAction>
+                    <FollowTrajectoryAction>
+                      <Trajectory name="VT1_Trajectory" closed="false">
+                        <Shape>
+                          <Polyline>
+                            <Vertex time="0.00">
+                                <Position><WorldPosition x="-360.0000" y="145.0000" z="0" h="-1.5708"/></Position>
+                            </Vertex>
+                            <Vertex time="1.00">
+                                <Position><WorldPosition x="-360.0000" y="140.8300" z="0" h="-1.5708"/></Position>
+                            </Vertex>
+                            <Vertex time="2.00">
+                                <Position><WorldPosition x="-360.0000" y="136.6600" z="0" h="-1.5708"/></Position>
+                            </Vertex>
+                            <Vertex time="3.00">
+                                <Position><WorldPosition x="-360.0000" y="132.4900" z="0" h="-1.5708"/></Position>
+                            </Vertex>
+                            <Vertex time="4.00">
+                                <Position><WorldPosition x="-360.0000" y="128.3200" z="0" h="-1.5708"/></Position>
+                            </Vertex>
+                             <Vertex time="5.00">
+                                <Position><WorldPosition x="-360.0000" y="120.0000" z="0" h="-1.5708"/></Position>
+                            </Vertex>
+                          </Polyline>
+                        </Shape>
+                      </Trajectory>
+                        <TimeReference>
+                           <Timing domainAbsoluteRelative="relative" scale="1.0" offset="0.0"/>
+                        </TimeReference>
+                        <TrajectoryFollowingMode followingMode="position"/>
+                    </FollowTrajectoryAction>
+                  </RoutingAction>
+                </PrivateAction>
+              </Action>
+
+              <StartTrigger>
+                <ConditionGroup>
+                  <Condition name="VT1_Start_Distance_Trigger" delay="0" conditionEdge="none">
+                    <ByEntityCondition>
+                      <TriggeringEntities triggeringEntitiesRule="any">
+                        <EntityRef entityRef="VUT"/>
+                      </TriggeringEntities>
+                      <EntityCondition>
+                        <RelativeDistanceCondition 
+                            entityRef="VT1" 
+                            relativeDistanceType="cartesianDistance" 
+                            value="30.0" 
+                            rule="lessThan" 
+                            freeSpace="false"/>
+                      </EntityCondition>
+                    </ByEntityCondition>
+                  </Condition>
+                </ConditionGroup>
+              </StartTrigger>
+
             </Event>
           </Maneuver>
         </ManeuverGroup>
