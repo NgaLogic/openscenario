@@ -1,0 +1,707 @@
+{
+    "id": "100002",
+    "scenario_id": "1",
+    "scenario_name": "行人鬼探头",
+    "case_id": "2",
+    "case_name": "40km/h行人鬼探头",
+    "vut_id": "obu-0003",
+    "vut_vel": "40",
+    "participant_id": "obu-0015",
+    "participant_vel": "5",
+    "enable_status": true,
+    "creat_time": NumberLong("1691499479615"),
+    "update_time": NumberLong("1696828932432"),
+    "TTC":"3.6",
+    "participant_acc":"2",
+    "participant_collision_dis":"TTC * participant_vel + (participant_vel^2) / (2 * participant_acc)",
+    "vut_collision_dis":"TTC * vut_vel + (vut_vel * participant_vel) / participant_acc",
+    "participant_vut_collision_dis": "sqrt( participant_collision_dis^2 + vut_collision_dis^2 )",
+    "trigger_distance":"0",
+    "veh_num": NumberInt("0"),
+    "veh_content": [ 
+        {
+            "veh_id": "obu-0005",
+            "veh_vel": "0",
+            "trajectory_num": NumberInt("1"),
+            "trajectory_content": [
+                {
+                    "time": 0,
+                    "x": -5.3,
+                    "y": 0,
+                    "xyheading": 90,
+                    "heading": 90,
+                    "velocity": 0.0,
+                    "acc": 2.0
+                 }
+            ]
+        }
+
+    ],
+    "ped_num": NumberInt("1"),
+    "ped_content": [
+        {
+            "ped_id": "obu-0015",
+            "ped_vel": "5",
+            "trajectory_num": NumberInt("1"),
+            "trajectory_content":[
+            {
+                "time": 0.0,
+                "x": 0.0,
+                "y": 5.487025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 0.0,
+                "acc": 2.0
+            },
+            {
+                "time": 0.1,
+                "x": 0.0,
+                "y": 5.477025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 0.2,
+                "acc": 2.0
+            },
+            {
+                "time": 0.2,
+                "x": 0.0,
+                "y": 5.447025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 0.4,
+                "acc": 2.0
+            },
+            {
+                "time": 0.3,
+                "x": 0.0,
+                "y": 5.397025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 0.6,
+                "acc": 2.0
+            },
+            {
+                "time": 0.4,
+                "x": 0.0,
+                "y": 5.327025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 0.8,
+                "acc": 2.0
+            },
+            {
+                "time": 0.5,
+                "x": 0.0,
+                "y": 5.237025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.0,
+                "acc": 2.0
+            },
+            {
+                "time": 0.6,
+                "x": 0.0,
+                "y": 5.127025,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.2,
+                "acc": 2.0
+            },
+            {
+                "time": 0.7,
+                "x": 0.0,
+                "y": 4.99705,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 0.8,
+                "x": 0.0,
+                "y": 4.85805,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 0.9,
+                "x": 0.0,
+                "y": 4.71905,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.0,
+                "x": 0.0,
+                "y": 4.58005,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.1,
+                "x": 0.0,
+                "y": 4.44105,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.2,
+                "x": 0.0,
+                "y": 4.30205,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.3,
+                "x": 0.0,
+                "y": 4.16305,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.4,
+                "x": 0.0,
+                "y": 4.02405,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.5,
+                "x": 0.0,
+                "y": 3.88505,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.6,
+                "x": 0.0,
+                "y": 3.74605,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.7,
+                "x": 0.0,
+                "y": 3.60705,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.8,
+                "x": 0.0,
+                "y": 3.46805,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 1.9,
+                "x": 0.0,
+                "y": 3.32905,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.0,
+                "x": 0.0,
+                "y": 3.19005,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.1,
+                "x": 0.0,
+                "y": 3.05105,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.2,
+                "x": 0.0,
+                "y": 2.91205,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.3,
+                "x": 0.0,
+                "y": 2.77305,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.4,
+                "x": 0.0,
+                "y": 2.63405,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.5,
+                "x": 0.0,
+                "y": 2.49505,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.6,
+                "x": 0.0,
+                "y": 2.35605,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.7,
+                "x": 0.0,
+                "y": 2.21705,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.8,
+                "x": 0.0,
+                "y": 2.07805,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 2.9,
+                "x": 0.0,
+                "y": 1.93905,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.0,
+                "x": 0.0,
+                "y": 1.80005,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.1,
+                "x": 0.0,
+                "y": 1.66105,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.2,
+                "x": 0.0,
+                "y": 1.52205,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.3,
+                "x": 0.0,
+                "y": 1.38305,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.4,
+                "x": 0.0,
+                "y": 1.24405,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.5,
+                "x": 0.0,
+                "y": 1.10505,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.6,
+                "x": 0.0,
+                "y": 0.96605,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.7,
+                "x": 0.0,
+                "y": 0.82705,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.8,
+                "x": 0.0,
+                "y": 0.68805,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 3.9,
+                "x": 0.0,
+                "y": 0.54905,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.0,
+                "x": 0.0,
+                "y": 0.41005,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.1,
+                "x": 0.0,
+                "y": 0.27105,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.2,
+                "x": 0.0,
+                "y": 0.13205,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.295,
+                "x": 0.0,
+                "y": 0.0,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.3,
+                "x": 0.0,
+                "y": -0.00695,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.4,
+                "x": 0.0,
+                "y": -0.14595,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.5,
+                "x": 0.0,
+                "y": -0.28495,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.6,
+                "x": 0.0,
+                "y": -0.42395,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.7,
+                "x": 0.0,
+                "y": -0.56295,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.8,
+                "x": 0.0,
+                "y": -0.70195,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 4.9,
+                "x": 0.0,
+                "y": -0.84095,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.0,
+                "x": 0.0,
+                "y": -0.97995,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.1,
+                "x": 0.0,
+                "y": -1.11895,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.2,
+                "x": 0.0,
+                "y": -1.25795,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.3,
+                "x": 0.0,
+                "y": -1.39695,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.4,
+                "x": 0.0,
+                "y": -1.53595,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.5,
+                "x": 0.0,
+                "y": -1.67495,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.6,
+                "x": 0.0,
+                "y": -1.81395,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.7,
+                "x": 0.0,
+                "y": -1.95295,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.8,
+                "x": 0.0,
+                "y": -2.09195,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 5.9,
+                "x": 0.0,
+                "y": -2.23095,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.0,
+                "x": 0.0,
+                "y": -2.36995,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.1,
+                "x": 0.0,
+                "y": -2.50895,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.2,
+                "x": 0.0,
+                "y": -2.64795,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.3,
+                "x": 0.0,
+                "y": -2.78695,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.4,
+                "x": 0.0,
+                "y": -2.92595,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.5,
+                "x": 0.0,
+                "y": -3.06495,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.6,
+                "x": 0.0,
+                "y": -3.20395,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.7,
+                "x": 0.0,
+                "y": -3.34295,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.8,
+                "x": 0.0,
+                "y": -3.48195,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 6.9,
+                "x": 0.0,
+                "y": -3.62095,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 7.0,
+                "x": 0.0,
+                "y": -3.75995,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            },
+            {
+                "time": 7.1,
+                "x": 0.0,
+                "y": -3.89895,
+                "heading": 180.0,
+                "xyheading": 180.0,
+                "velocity": 1.39,
+                "acc": 0.0
+            }
+        ]
+        }
+    ]
+}
