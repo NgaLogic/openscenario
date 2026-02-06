@@ -15,15 +15,34 @@ def calculate_trajectory_points(xosc_file):
     TARGET_SPEED_KMH = 15.0  # 目标速度 km/h
     TARGET_SPEED_MS = TARGET_SPEED_KMH / 3.6 # 换算为 m/s (约 4.167)
     
-    # 计算加速阶段需要的距离和时间
-    # v^2 - v0^2 = 2as  =>  s = v^2 / 2a
+    # 新的起点和原始起点
+    NEW_START_X = -327.68
+    NEW_START_Y = 122.16
+    ORIGINAL_START_X = -332.0
+    ORIGINAL_START_Y = 118.0
+    
+    # 计算加速阶段的参数
     acc_distance = (TARGET_SPEED_MS ** 2) / (2 * ACC)
     acc_time_duration = TARGET_SPEED_MS / ACC
+    
+    # 计算从新起点到原始起点的距离和方向
+    dx_total = ORIGINAL_START_X - NEW_START_X
+    dy_total = ORIGINAL_START_Y - NEW_START_Y
+    distance_to_original = math.sqrt(dx_total**2 + dy_total**2)
+    
+    # 单位方向向量
+    dir_x = dx_total / distance_to_original
+    dir_y = dy_total / distance_to_original
+    
+    # 计算方向角
+    heading_to_original = math.atan2(dy_total, dx_total)
 
     print(f"--- 运动学参数 ---")
     print(f"目标速度: {TARGET_SPEED_KMH} km/h ({TARGET_SPEED_MS:.3f} m/s)")
     print(f"加速度: {ACC} m/s^2")
-    print(f"加速距离: {acc_distance:.3f} 米 (在此距离前加速，之后匀速)")
+    print(f"加速距离: {acc_distance:.3f} 米")
+    print(f"从新起点 ({NEW_START_X}, {NEW_START_Y}) 到原始起点 ({ORIGINAL_START_X}, {ORIGINAL_START_Y})")
+    print(f"距离: {distance_to_original:.3f} 米")
     print(f"------------------\n")
 
     # ================= 1. 提取原始几何点 =================
@@ -71,82 +90,96 @@ def calculate_trajectory_points(xosc_file):
 
     total_raw_points = len(raw_points)
     print(f"提取到原始路径点数: {total_raw_points}")
-    if total_raw_points < 2:
-        print("点数太少，无法计算！")
-        return
+    
+    # 限制只使用前183个点（原始轨迹）
+    if total_raw_points > 183:
+        raw_points = raw_points[:183]
+        total_raw_points = 183
+        print(f"限制为前183个点（原始轨迹）")
+    
+    print(f"原始轨迹第一个点: ({raw_points[0]['x']:.2f}, {raw_points[0]['y']:.2f})")
+    print(f"原始轨迹最后一个点: ({raw_points[-1]['x']:.2f}, {raw_points[-1]['y']:.2f})")
+    print()
 
-    # ================= 2. 重新计算时间与速度 =================
+    # ================= 2. 生成从新起点到原始起点的加速段 =================
     final_points = []
-    cumulative_distance = 0.0
     
     # 辅助函数：弧度转角度
     def rad_to_deg(r):
         return r * (180 / math.pi)
-
-    # 处理第0个点
-    start_p = raw_points[0]
-    final_points.append({
-        "time": 0.0,
-        "x": start_p['x'],
-        "y": start_p['y'],
-        "heading": round(rad_to_deg(start_p['h_rad']), 2),
-        "h_rad": start_p['h_rad'],  # 保存原始弧度
-        "velocity": 0.0,
-        "acc": ACC,
-        "stage": "启动"
-    })
-
-    prev_x = start_p['x']
-    prev_y = start_p['y']
-
-    for i in range(1, total_raw_points):
-        curr_p = raw_points[i]
+    
+    # 步长：0.1 m 间隔
+    step_size = 0.1
+    num_steps = int(distance_to_original / step_size)
+    
+    for step in range(num_steps + 1):
+        progress = min(step / num_steps, 1.0) if num_steps > 0 else 1.0
         
-        # 计算这一段的距离
-        dx = curr_p['x'] - prev_x
-        dy = curr_p['y'] - prev_y
-        dist_segment = math.sqrt(dx*dx + dy*dy)
-        cumulative_distance += dist_segment
-
-        current_time = 0.0
-        current_vel = 0.0
-        current_stage = ""
-
-        # === 核心逻辑：判断是在加速段还是匀速段 ===
-        if cumulative_distance <= acc_distance:
-            # 【阶段1：纯加速】
-            # S = 0.5 * a * t^2  =>  t = sqrt(2S / a)
-            current_time = math.sqrt(2 * cumulative_distance / ACC)
-            # v = a * t
+        # 当前点位置
+        curr_x = NEW_START_X + dx_total * progress
+        curr_y = NEW_START_Y + dy_total * progress
+        curr_distance = distance_to_original * progress
+        
+        # 计算运动状态（从新起点开始加速）
+        if curr_distance <= acc_distance:
+            # 加速段
+            current_time = math.sqrt(2 * curr_distance / ACC) if curr_distance > 0 else 0.0
             current_vel = ACC * current_time
             current_stage = "加速中"
-        
         else:
-            # 【阶段2：达到极速，匀速行驶】
-            # 时间 = 加速段时间 + (总距离 - 加速段距离) / 匀速速度
-            dist_in_cruise = cumulative_distance - acc_distance
+            # 到达原始起点时已达目标速度，之后匀速
+            dist_in_cruise = curr_distance - acc_distance
             time_in_cruise = dist_in_cruise / TARGET_SPEED_MS
             current_time = acc_time_duration + time_in_cruise
-            
-            current_vel = TARGET_SPEED_MS # 保持极速
+            current_vel = TARGET_SPEED_MS
             current_stage = "匀速"
-
-        # 添加点
+        
         final_points.append({
             "time": round(current_time, 3),
-            "x": curr_p['x'],
-            "y": curr_p['y'],
-            "heading": round(rad_to_deg(curr_p['h_rad']), 2),
-            "h_rad": curr_p['h_rad'],  # 保存原始弧度供后续使用
+            "x": curr_x,
+            "y": curr_y,
+            "heading": round(rad_to_deg(heading_to_original), 2),
+            "h_rad": heading_to_original,
             "velocity": round(current_vel, 2),
             "acc": ACC if current_stage == "加速中" else 0.0,
             "stage": current_stage
         })
+    
+    # 记录到达原始起点时的时间
+    time_at_original_start = final_points[-1]['time']
+    print(f"到达原始起点时: 时间={time_at_original_start:.3f}s, 速度={final_points[-1]['velocity']:.2f} m/s\n")
 
-        prev_x = curr_p['x']
-        prev_y = curr_p['y']
+    # ================= 3. 添加原始轨迹（以匀速4.17m/s继续）=================
+    # 第二段直接以目标速度匀速行驶，不重新加速
+    for i in range(total_raw_points):
+        curr_p = raw_points[i]
+        
+        # 计算从起点到当前点的累积距离
+        cumulative_distance = 0.0
+        for j in range(1, i + 1):
+            prev_p = raw_points[j - 1]
+            dx = raw_points[j]['x'] - prev_p['x']
+            dy = raw_points[j]['y'] - prev_p['y']
+            cumulative_distance += math.sqrt(dx*dx + dy*dy)
+        
+        # 以匀速速度计算时间（从原始起点开始）
+        time_from_original = cumulative_distance / TARGET_SPEED_MS
+        
+        # 总时间 = 加速段时间 + 原始轨迹上的时间
+        final_time = time_at_original_start + time_from_original
+        
+        final_points.append({
+            "time": round(final_time, 3),
+            "x": curr_p['x'],
+            "y": curr_p['y'],
+            "heading": round(rad_to_deg(curr_p['h_rad']), 2),
+            "h_rad": curr_p['h_rad'],
+            "velocity": round(TARGET_SPEED_MS, 2),  # 始终保持目标速度
+            "acc": 0.0,  # 匀速，加速度为0
+            "stage": "匀速"
+        })
 
-    # ================= 3. 输出检查 =================
+    # ================= 4. 输出检查 =================
     print("\n--- 计算结果预览 (前5个点) ---")
     for p in final_points[:5]:
         print(p)
@@ -164,7 +197,7 @@ def calculate_trajectory_points(xosc_file):
     print(f"总耗时: {final_points[-1]['time']} 秒")
     print(f"最终速度: {final_points[-1]['velocity']} m/s (应接近 {TARGET_SPEED_MS:.3f})")
 
-    # ================= 4. 输出 XOSC 格式 =================
+    # ================= 5. 输出 XOSC 格式 =================
     print(f"\n--- XOSC 格式的 Vertex 点 ---\n")
     
     xosc_output = []
@@ -183,4 +216,4 @@ def calculate_trajectory_points(xosc_file):
     print(f"\n已保存到文件: {output_file}")
 
 # 运行
-calculate_trajectory_points("Roundabout.xosc")
+calculate_trajectory_points("Roundabout_20260203_full.xosc")
