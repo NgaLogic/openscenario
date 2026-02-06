@@ -1,0 +1,56 @@
+{
+    "id": "110000",
+    "scenario_id": "4",
+    "scenario_name": "环岛",
+    "case_id": "1",
+    "case_name": "30km/h环岛",
+    "vut_id": "obu-0003",
+    "vut_vel": "30",
+    "participant_id": "obu-0005",
+    "participant_vel": "15",
+    "enable_status": true,
+    "creat_time": 1770372888651,
+    "update_time": 1770372888651,
+    "TTC": "2.5",
+    "participant_acc": "1.2",
+    "participant_collision_dis": "TTC * participant_vel + (participant_vel^2) / (2 * participant_acc)",
+    "vut_collision_dis": "TTC * vut_vel + (vut_vel * participant_vel) / participant_acc",
+    "participant_vut_collision_dis": "sqrt( participant_collision_dis^2 + vut_collision_dis^2 )",
+    "trigger_distance": "30",
+    "veh_num": 2,
+    "veh_content": [
+        {
+            "veh_id": "obu-0005",
+            "veh_vel": "15",
+            "trajectory_num": 1,
+            "trajectory_content": [
+                {
+                    "time": 0.0,
+                    "x": -332.0,
+                    "y": 118.0,
+                    "heading": -135.0,
+                    "xyheading": -135.0,
+                    "velocity": 0.0,
+                    "acc": 1.2
+                },
+                {
+                    "time": 10.718,
+                    "x": -382.4374,
+                    "y": 71.0172,
+                    "heading": -140.47,
+                    "xyheading": -140.47,
+                    "velocity": 12.86,
+                    "acc": 1.2
+                }
+            ]
+        },
+        {
+            "veh_id": "obu-0006",
+            "veh_vel": "0",
+            "trajectory_num": 1,
+            "trajectory_content": []
+        }
+    ],
+    "ped_num": 0,
+    "ped_content": []
+}
